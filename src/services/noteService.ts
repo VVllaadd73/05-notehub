@@ -17,7 +17,7 @@ interface ReplaceNote {
 const API_KEY = import.meta.env.VITE_NOTEHUB_TOKEN;
 axios.defaults.baseURL = 'https://notehub-public.goit.study/api';
 
-export async function fetchNotes(page: number, onQuery: string) {
+export async function fetchNotes(onQuery: string, page: number) {
    const response = await axios.get<FetchNotesResponse>('/notes', {
       headers: {
          Authorization: `Bearer ${API_KEY}`,
@@ -32,7 +32,7 @@ export async function fetchNotes(page: number, onQuery: string) {
 }
 
 export async function createNote(note: ReplaceNote) {
-   const response = await axios.post<ReplaceNote>('/notes', note, {
+   const response = await axios.post<Note>('/notes', note, {
       headers: {
          Authorization: `Bearer ${API_KEY}`,
       },
@@ -41,7 +41,7 @@ export async function createNote(note: ReplaceNote) {
 }
 
 export async function deleteNote(id: string) {
-   const response = await axios.delete(`/notes/${id}`, {
+   const response = await axios.delete<Note>(`/notes/${id}`, {
       headers: {
          Authorization: `Bearer ${API_KEY}`,
       },

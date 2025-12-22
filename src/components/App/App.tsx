@@ -24,7 +24,7 @@ export default function App() {
 
 const { data, isSuccess, isLoading, isError } = useQuery({
    queryKey: ['note', page, onQuery],
-   queryFn: () => fetchNotes(page, onQuery),
+   queryFn: () => fetchNotes(onQuery, page),
    placeholderData: keepPreviousData,
 });
    const totalPages = data?.totalPages;
