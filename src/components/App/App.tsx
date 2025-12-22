@@ -6,7 +6,7 @@ import NoteList from '../NoteList/NoteList';
 import NoteForm from '../NoteForm/NoteForm';
 import Modal from '../Modal/Modal';
 
-import { fetchNotes } from '../services/noteService';
+import { fetchNotes } from '../../services/noteService';
 
 import { useState } from 'react';
 import { useDebouncedCallback } from 'use-debounce';
