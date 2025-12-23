@@ -1,3 +1,5 @@
+// src/components/NoteForm/NoteForm.tsx
+
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
@@ -11,13 +13,7 @@ interface NoteFormProps {
    onClose: () => void;
 }
 
-export interface CreateNotePayload {
-   title: string;
-   content: string;
-   tag: 'Todo' | 'Work' | 'Personal' | 'Meeting' | 'Shopping';
-}
-
-const initialValues: CreateNotePayload = {
+const initialValues: NoteFormValues = {
    title: '',
    content: '',
    tag: 'Todo',
