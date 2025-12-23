@@ -3,6 +3,7 @@ import * as Yup from 'yup';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { createNote } from '../../services/noteService';
+import type { CreateNotePayload as NoteFormValues } from '../../services/noteService';
 
 import css from './NoteForm.module.css';
 
@@ -10,13 +11,13 @@ interface NoteFormProps {
    onClose: () => void;
 }
 
-interface NoteFormValues {
+export interface CreateNotePayload {
    title: string;
    content: string;
    tag: 'Todo' | 'Work' | 'Personal' | 'Meeting' | 'Shopping';
 }
 
-const initialValues: NoteFormValues = {
+const initialValues: CreateNotePayload = {
    title: '',
    content: '',
    tag: 'Todo',

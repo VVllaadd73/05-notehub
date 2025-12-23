@@ -8,12 +8,6 @@ interface FetchNotesResponse {
    totalPages: number;
 }
 
-interface ReplaceNote {
-   title: string;
-   tag: string;
-   content: string;
-}
-
 const API_KEY = import.meta.env.VITE_NOTEHUB_TOKEN;
 axios.defaults.baseURL = 'https://notehub-public.goit.study/api';
 
@@ -31,12 +25,19 @@ export async function fetchNotes(onQuery: string, page: number) {
    return response.data;
 }
 
-export async function createNote(note: ReplaceNote) {
-   const response = await axios.post<Note>('/notes', note, {
+export interface CreateNotePayload {
+   title: string;
+   content: string;
+   tag: 'Todo' | 'Work' | 'Personal' | 'Meeting' | 'Shopping';
+}
+
+export async function createNote(payload: CreateNotePayload): Promise<Note> {
+   const response = await axios.post<Note>('/notes', payload, {
       headers: {
          Authorization: `Bearer ${API_KEY}`,
       },
    });
+
    return response.data;
 }
 
